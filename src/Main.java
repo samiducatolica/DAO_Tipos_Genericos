@@ -17,12 +17,12 @@ public class Main {
         List<Actor> actors = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
-        int opcion;
+        int opcion; int opcionGuardar ;
         UUID idActor;
 
-        boolean redo =true;
+        boolean redo =true; boolean guardado =true;
         do{
-            System.out.println("*# GESTINO DE ACTORES #*");
+            System.out.println("*# GESTION DE ACTORES #*");
             System.out.println("Que accion quieres realizar?");
             System.out.println("[1] Crear registro\n"+
                     "[2] Actualziar registro\n"+
@@ -30,6 +30,7 @@ public class Main {
                     "[4] Buscar un registro\n"+
                     "[5] Mostrar todos los registros\n"+
                     "[0] Salir");
+
             opcion = sc.nextInt();
 
             switch (opcion){
@@ -39,6 +40,25 @@ public class Main {
                     actor.setFirst_name(sc.next());
                     System.out.println("Inserta apellido:");
                     actor.setLast_name(sc.next());
+                    do {
+                        System.out.println("|DESTINO DE GUARDADO|");
+                        System.out.println("[1] Base de datos");
+                        System.out.println("[2] Archivo Texto");
+                        System.out.println("[0] Salir");
+                        opcionGuardar =sc.nextInt();
+                        switch (opcionGuardar){
+                            case 1:
+                                // logica de  guardador BD
+                                break;
+                            case 2:
+                                //logica de guardado archvio
+                                break;
+                            case 0:
+                                guardado = false;
+                                break;
+                        }
+
+                    }while(guardado);
                     System.out.println(dao.crearRegistro(actor));
                     break;
 
